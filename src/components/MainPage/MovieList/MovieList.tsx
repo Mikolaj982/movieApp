@@ -1,16 +1,18 @@
 import React from "react";
-import {moviesData, moviesDataType} from "../MainPage";
+import {moviesDataType} from "../MainPage";
 
-// interface Movies {
-//     name: string,
-// }
 
 export const MovieList: React.FC<{movies: moviesDataType}> = ({movies}) => {
+    console.log(movies)
     return <>
-            {movies.map((movie: any, index: any) => {
+            {movies && movies.map((movie) => {
                 return (
-                    <div>
-                        <img src={movie.poster} alt='movie'></img>
+                    <div key={movie.id}>
+                        <img src={movie.poster} alt='movie' style={{
+                            width:'50px',
+                            height:'80px',
+
+                        }}></img>
                     </div>
                 );
             })}

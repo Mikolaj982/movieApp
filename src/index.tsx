@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {SignUp} from "./components/SignUp/SignUp";
 import { MainPage } from './components/MainPage/MainPage';
+import {SignIn} from "./components/SignIn/SignIn";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <MainPage />
+    <SignIn />
 );
 
 // If you want to start measuring performance in your app, pass a function

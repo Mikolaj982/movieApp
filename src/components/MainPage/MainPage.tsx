@@ -2,17 +2,17 @@ import React from "react";
 import {useEffect, useState} from "react";
 import {MovieList} from "./MovieList/MovieList";
 
-export interface moviesData {
-    // id?: number,
+export interface moviesDataProps {
+    id: number,
     name: string,
-    // type?: string,
-    // description?: string,
-    // poster?: string,
+    type: string,
+    description: string,
+    poster: string,
 }
-export type moviesDataType = moviesData[]
+export type moviesDataType = moviesDataProps[] | undefined
 
 export const MainPage: React.FC = () => {
-    const [moviesData, setMoviesData] = useState<moviesDataType | undefined>()
+    const [moviesData, setMoviesData] = useState<moviesDataType>()
 
     useEffect(() => {
                 fetch('https://unelmamovie.com/api/v1/titles', {
@@ -24,8 +24,9 @@ export const MainPage: React.FC = () => {
                     }
                 })
                     .then(res => res.json())
-                    .then(data => setMoviesData(data))
+                    .then(data => setMoviesData(data.pagination.data))
                     .catch(error => console.log(error))
+        console.log(moviesData)
     }, []);
     console.log(moviesData)
     return <>
@@ -47,7 +48,9 @@ export const MainPage: React.FC = () => {
         <div>
             <h2>list</h2>
             <div>
-                <ul>
+                <ul style={{
+                    display:'flex'
+                }}>
                     <MovieList movies={moviesData}/>
                 </ul>
             </div>
