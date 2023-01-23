@@ -1,15 +1,21 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 
-export const SignIn = () => {
+export const SignIn:React.FC = () => {
 
-    const [signData, setSignData] = useState({
+    const [signInData, setSignInData] = useState({
         email:'',
         password:'',
     })
     const onSubmit = (e: any) => {
         e.preventDefault();
-        console.log(signData)
+        console.log(signInData)
+    }
+    const handleSignInData = (e: any) => {
+        setSignInData({
+            ...signInData,
+            [e.target.name]: e.target.value,
+        })
     }
     return <>
         <h1>Sign In</h1>
@@ -17,18 +23,17 @@ export const SignIn = () => {
         <form onSubmit={onSubmit}>
             <label htmlFor='email'>Email</label>
             <input
-                name='email'
+                id='email'
                 type='email'
-                onChange={(e) => setSignData({
-                    ...signData,
-                    [e.target.name]: e.target.value,
-                })}
+                name='email'
+                onChange={handleSignInData}
             />
             <label htmlFor='password'>Password</label>
-            <input type='password' name='password' onChange={(e) => setSignData({
-                ...signData,
-                [e.target.name]: e.target.value,
-            })}/>
+            <input
+                type='password'
+                id='password'
+                name='password'
+                onChange={handleSignInData}/>
             <button>Sign In</button>
         </form>
         {/*        */}
