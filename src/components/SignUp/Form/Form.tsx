@@ -41,11 +41,13 @@ export const Form: React.FC = () => {
             </div>
             <label htmlFor='email'>Email</label>
             <input name='email'
+                   type='email'
                    id='email'
                    onChange={handleSignUpData}
             />
             <label htmlFor='password'>Password</label>
             <input name='password'
+                   type='password'
                    id='password'
                    onChange={handleSignUpData}
             />
